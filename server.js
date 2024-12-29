@@ -1,7 +1,13 @@
 const express =require('express')
+require('dotenv').config()
 
 
-//this is the line of code
-//how are you guys 
-//are you fine
+const app=express()
+port=process.env.PORT || 8000
+
+
+
+app.listen(port,()=>{
+    console.log(`server started on port ${port}`)
+})
 
