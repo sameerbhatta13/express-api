@@ -48,7 +48,13 @@ userSchema.methods={
         } catch (error) {
             return err
         }
+    },
+    authenticate:function(plainText){
+        return this.encryptPassword(plainText)===this.hashed_password
+
     }
 }
 
 module.exports=mongoose.model('User',userSchema)
+
+
