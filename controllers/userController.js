@@ -19,7 +19,7 @@ exports.postUser=async(req,res)=>{
             res.send(user)
         }
         else{
-            return res.status(400).json({error:'email must be unique'})
+            return res.status(400).json({error:'email must be '})
         }
     })
 }
@@ -74,7 +74,7 @@ exports.resetPassword=async (req,res) => {
     if(!user){
         return res.status(400).json({error:'unable to find the valid user '})
     }
-    user.password=req.body.password //this req.body.password and not used hashed password is used from virtual field password
+    user.hashed_password=req.body.password //this req.body.password and not used hashed password is used from virtual field password
     user=await user.save()
     if(!user){
         return res.status(400).json({error:'failed to reset password '})
