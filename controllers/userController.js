@@ -4,11 +4,12 @@ const crypto=require('crypto')
 const jwt=require('jsonwebtoken') //authentication 
 
 exports.postUser=async(req,res)=>{
+    let {username,email,password}=req.body
     let user= new User({
-        userName:req.body.userName,
-        email:req.body.email,
-        password:req.body.password
-    
+        
+        userName:username,
+        email,
+        password
     })
     User.findOne({email:user.email}).then(async data=>{
         if(data==null){
